@@ -15,12 +15,8 @@
         <setBody>
             <constant>This is a dummy body</constant>
         </setBody>
+        <log message="Key: ${header.CamelInfinispanKey}, Value: ${header.CamelInfinispanValue}, Body: ${body}"/>
         <to uri="infinispan://localhost?cacheContainer=#cacheManager&amp;command=PUT"/>
-        <to uri="log:local-put?showHeaders=true"/>
-    </route>
-    <route>
-        <from uri="infinispan://localhost?cacheContainer=#cacheManager"/>
-        <to uri="log:local-get?showHeaders=true"/>
     </route>
 </camelContext>
 
